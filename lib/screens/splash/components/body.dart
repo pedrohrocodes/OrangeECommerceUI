@@ -1,3 +1,4 @@
+import 'package:e_commerce_ui/components/default_button.dart';
 import 'package:e_commerce_ui/constants.dart';
 import 'package:e_commerce_ui/screens/splash/components/splash_content.dart';
 import 'package:e_commerce_ui/size_config.dart';
@@ -59,22 +60,14 @@ class _BodyState extends State<Body> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: List.generate(
                             splashData.length, (index) => buildDot(index))),
-                    Spacer(),
-                    SizedBox(
-                      width: double.infinity,
-                      height: getProportionateScreenHeight(56),
-                      child: FlatButton(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          color: kPrimaryColor,
-                          onPressed: () {},
-                          child: Text(
-                            "Continue",
-                            style: TextStyle(
-                                fontSize: getProportionateScreenWidth(18),
-                                color: Colors.white),
-                          )),
-                    )
+                    Spacer(
+                      flex: 3,
+                    ),
+                    DefaultButton(
+                      text: "Continue",
+                      press: () {},
+                    ),
+                    Spacer()
                   ],
                 ),
               ),
