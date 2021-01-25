@@ -1,7 +1,8 @@
-import 'package:e_commerce_ui/constants.dart';
-import 'package:e_commerce_ui/size_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
+import '../../../size_config.dart';
+import 'sign_form.dart';
 
 class Body extends StatelessWidget {
   @override
@@ -25,7 +26,8 @@ class Body extends StatelessWidget {
                 "Sign in with your email and password \nor continue with social media",
                 textAlign: TextAlign.center,
               ),
-              SignForm()
+              SignForm(),
+              SocialCard()
             ],
           ),
         ),
@@ -34,36 +36,20 @@ class Body extends StatelessWidget {
   }
 }
 
-class SignForm extends StatefulWidget {
-  @override
-  _SignFormState createState() => _SignFormState();
-}
+class SocialCard extends StatelessWidget {
+  const SocialCard({
+    Key key,
+  }) : super(key: key);
 
-class _SignFormState extends State<SignForm> {
   @override
   Widget build(BuildContext context) {
-    return Form(
-      child: Column(
-        children: [
-          TextFormField(
-            decoration: InputDecoration(
-                labelText: "Email",
-                hintText: "Enter your email",
-                floatingLabelBehavior: FloatingLabelBehavior.always,
-                suffixIcon: Padding(
-                  padding: EdgeInsets.fromLTRB(
-                      0,
-                      getProportionateScreenWidth(20),
-                      getProportionateScreenWidth(20),
-                      getProportionateScreenWidth(20)),
-                  child: SvgPicture.asset(
-                    "assets/icons/Mail.svg",
-                    height: getProportionateScreenWidth(18),
-                  ),
-                )),
-          ),
-        ],
-      ),
+    return Container(
+      padding: EdgeInsets.all(getProportionateScreenWidth(12)),
+      height: getProportionateScreenHeight(40),
+      width: getProportionateScreenWidth(40),
+      decoration:
+          BoxDecoration(color: Color(0xFFF5F6F9), shape: BoxShape.circle),
+      child: SvgPicture.asset("assets/icons/facebook-2.svg"),
     );
   }
 }
