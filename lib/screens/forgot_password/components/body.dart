@@ -1,7 +1,7 @@
 import 'package:e_commerce_ui/components/default_button.dart';
-import 'package:e_commerce_ui/screens/sign_in/components/custom_suffix_icon.dart';
-import 'package:e_commerce_ui/screens/sign_in/components/form_error.dart';
-import 'package:e_commerce_ui/screens/sign_in/components/no_account_text.dart';
+import 'package:e_commerce_ui/components/custom_suffix_icon.dart';
+import 'package:e_commerce_ui/components/form_error.dart';
+import 'package:e_commerce_ui/components/no_account_text.dart';
 import 'package:e_commerce_ui/size_config.dart';
 import 'package:flutter/material.dart';
 
