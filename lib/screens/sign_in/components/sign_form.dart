@@ -20,6 +20,20 @@ class _SignFormState extends State<SignForm> {
   bool remember = false;
   final List<String> errors = [];
 
+  void addError({String error}) {
+    if (!errors.contains(error))
+      setState(() {
+        errors.remove(error);
+      });
+  }
+
+  void removeError({String error}) {
+    if (errors.contains(error))
+      setState(() {
+        errors.remove(error);
+      });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -76,31 +90,21 @@ class _SignFormState extends State<SignForm> {
       keyboardType: TextInputType.emailAddress,
       onSaved: (newValue) => email = newValue,
       onChanged: (value) {
-        if (value.isNotEmpty && errors.contains(kEmailNullError)) {
-          setState(() {
-            errors.remove(kEmailNullError);
-          });
-        } else if (emailValidatorRegExp.hasMatch(value) &&
-            errors.contains(kInvalidEmailError)) {
-          setState(() {
-            errors.remove(kInvalidEmailError);
-          });
-        }
+        if (value.isNotEmpty && errors.contains(kEmailNullError))
+          removeError(error: kEmailNullError);
+        else if (emailValidatorRegExp.hasMatch(value) &&
+            errors.contains(kInvalidEmailError))
+          removeError(error: kInvalidEmailError);
       },
       validator: (value) {
         if (value.isEmpty && !errors.contains(kEmailNullError)) {
-          setState(() {
-            errors.add(kEmailNullError);
-          });
+          addError(error: kEmailNullError);
           return "";
         } else if (!emailValidatorRegExp.hasMatch(value) &&
             !errors.contains(kInvalidEmailError)) {
-          setState(() {
-            errors.add(kInvalidEmailError);
-          });
+          addError(error: kInvalidEmailError);
           return "";
         }
-
         return null;
       },
       decoration: InputDecoration(
